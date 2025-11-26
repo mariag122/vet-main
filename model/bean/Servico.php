@@ -1,18 +1,18 @@
 <?php
     class Serviço {
         // Atributos
-        private $id;
+        private $idServico;
         private $nome;
-        private $descrição;
+        private $descricao;
         private $valor;
     
         // Métodos
-        public function getId() {
-            return $this->id;
+        public function getIdServico() {
+            return $this->idServico;
         }
 
-        public function setId($id) {
-            $this->id = $id;
+        public function setIdServico($idServico) {
+            $this->idServico = $idServico;
         }
 
         public function getNome() {
@@ -42,4 +42,5 @@
         public function __toString() {
             return $this->descricao;
         }
+
     }
