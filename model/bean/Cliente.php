@@ -4,7 +4,7 @@
         private $id;
         private $nome;
         private $telefone;
-         private $email;
+        private $email;
 
         //Métodos
         public function getId(){
