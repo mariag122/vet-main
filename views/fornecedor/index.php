@@ -1,12 +1,11 @@
 <?php
-    require "../../model/bean/Fornecedor.php";
+    require "../../model/bean/Cliente.php";
 
-    $f1 = new Fornecedor();
-    $f1 -> setId(1);
-    $f1 ->setRazaoSocial("Hardware SA");
-    $f1 ->setCnpj("00.111.222/0001-00");
-    $f1 ->setTelefone("42 99955-0755");
-    $f1 ->setEmail("contato@hw.com.br");
+    $c1 = new Cliente();
+    $c1 -> setId(1);
+    $c1 ->setNome("Hardware SA");
+    $c1 ->setEmail("00.111.222/0001-00");
+    $c1 ->setTelefone("42 99955-0755");
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -268,13 +267,12 @@
                 include "../../sidebar.html"?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                <div class=my-4>
-                <h2>Fornecedores</h2>
-                <a href="create.php">Novo Fornecedor</a>
+                <h2>Clientes</h2>
+                <a href="create.php">Novo Cliente</a>
                 <table class="table table-hover">
                     <tr>
                         <th>ID</th>
-                        <th>Razao Social</th>
-                        <th>CNPJ</th>
+                        <th>Nome </th>
                         <th>E-mail</th>
                         <th>Telefone</th>
                     </tr>
