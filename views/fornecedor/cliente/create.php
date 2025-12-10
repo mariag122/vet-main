@@ -263,11 +263,11 @@
                         </p>
                         <p class="form-group">
                             <label for="telefone">E-mail</label>
-                            <input type="text" name="telefone" class="form-control">
+                            <input type="text" name="email" class="form-control">
                         </p>
                         <p class="form-group">
                             <label for="email">Telefone</label>
-                            <input type="text" name="email" class="form-control">
+                            <input type="text" name="telefone" class="form-control">
                         </p>
                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
