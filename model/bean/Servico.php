@@ -16,6 +16,14 @@
         }
 
         public function getNome() {
+            return $this->nome;
+        }
+
+        public function setNome($nome) {
+            $this->nome = $nome;
+        }
+
+        public function getDescricao() {
             return $this->descricao;
         }
 
@@ -23,24 +31,17 @@
             $this->descricao = $descricao;
         }
 
-        public function getValorUnitario() {
-            return $this->valorUnitario;
+        public function getValor() {
+            return $this->valor;
         }
 
-        public function setValorUnitario($valorUnitario) {
-            $this->valorUnitario = $valorUnitario;
-        }
-
-        public function getQuantidade() {
-            return $this->quantidade;
-        }
-
-        public function setQuantidade($quantidade) {
-            $this->quantidade = $quantidade;
+        public function setValor($valor) {
+            $this->valor = $valor;
         }
         // Método para retornar uma string do objeto
         public function __toString() {
-            return $this->descricao;
+            return $this->nome;
         }
 
     }
+
