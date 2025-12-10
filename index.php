@@ -1,2 +1,3 @@
 <?php
-    header('Location: views/cliente');
+    // Apenas adicionando um comentário.
+    header('Location: views/home');
