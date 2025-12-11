@@ -262,15 +262,14 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Produtos</h2>
+                    <h2>Animais</h2>
                     <a href="create.php"Animal</a>
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Peso</th>
-                            <th>DataNascimento</th>
-                            <th>Especie
+                            <th>DataNascimento</th
                             <th>CLiente</th>
                             <th>Ações</th>
                         </tr>
@@ -280,7 +279,6 @@
                                 <td><?= $animal->getNome() ?></td>
                                 <td><?= $animal->getPeso() ?></td>
                                 <td><?= $animal->getDataNascimento() ?></td>
-                                <td><?= $animal->getEspecie() ?></td>
                                 <td><?= $animal->getCliente() ?></td>
                                 <td>
                                     <a href="edit.php?id=<?= $animal->getId() ?>" title="Editar">
