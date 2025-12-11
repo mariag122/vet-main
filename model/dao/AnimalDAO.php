@@ -79,7 +79,7 @@
                 $animal->setDataNascimento($linha['dataNascimento']);
                 
                 $animal->setEspecie($especie);
-                $animal->seCliente($Cliente);
+                $animal->setCliente($cliente);
                 return $animal;
             }
             catch(PDOException $e) {
