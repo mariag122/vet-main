@@ -3,7 +3,7 @@
 
     // Construir o objeto do atendimento
     $atendimento = new Atendimento();
-    $atendimento->setData_atendimento($_POST['data_atendimento']);
+    $atendimento->setDataAtendimento($_POST['data_atendimento']);
     
     // Construir um objeto do Animal
     $animal = new Animal();
