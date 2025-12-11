@@ -267,20 +267,20 @@
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
-                            <th>Data</th>
+                            <th>Data Atendimento</th>
                             <th>Animal</th>
                             <th>Servico</th>
                             <th>Ações</th>
                         </tr>
-                        <?php foreach($dao->read() as $compra) : ?>
+                        <?php foreach($dao->read() as $atendimento) : ?>
                             <tr>
-                                <td><?= $compra->getId() ?></td>
-                                <?php $data = $compra->getData() ?>
-                                <td><?= date("d/m/Y", strtotime($data)) ?></td>
-                                <td><?= $compra->getFornecedor() ?></td>
-                                <td><?= $compra->getUsuario() ?></td>
+                                <td><?= $atendimentos>getId() ?></td>
+                                <?php $data_atendimento = $atendimento->getData_atendimento() ?>
+                                <td><?= date("d/m/Y", strtotime($data_atendimento)) ?></td>
+                                <td><?= $atendimento->getAnimal() ?></td>
+                                <td><?= $atendimento->getServico() ?></td>
                                 <td>
-                                    <a class="link link-success" href="../compra_produto/create.php?id=<?= $compra->getId() ?>" title="Adicionar Produtos">
+                                    <a class="link link-success" href="../atendimento_animal/create.php?id=<?= $atendimento->getId() ?>" title="Adicionar Servicos">
                                         <i class="bi bi-cart"></i>
                                     </a>
                                     <a href="edit.php?id=<?= $compra->getId() ?>" title="Editar">
