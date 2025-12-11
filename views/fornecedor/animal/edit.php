@@ -5,8 +5,7 @@
     $dao = new AnimalDAO();
     $animal = $dao->find($_GET['id']);
 
-    // Buscar informações do tipo de produto para preenchimento da combobox
-    $daoEspecie = new EspecieDAO();
+    // 
     $daoCliente = new ClienteDAO();
 ?>
 
@@ -281,33 +280,16 @@
                             <label for="data_nascimento">Data Nascimento</label>
                             <input type="text" name="data_nascimento" class="form-control" value="<?= $animal->getDataNascimento() ?>">
                         </p>
-                      
-                        <!-- Para a chave estrangeira (associação com TipoProduto) -->
-                        <p class="form-group">
-                            <label for="especie">Especie</label>
-                            <select name="especie" class="form-control">
-                                <?php foreach($daoEspecie->read() as $especie) : ?>
-                                    <?php if(getEspecie->getEspecie()->getId() == $especie->getId()) : ?>
-                                        <option selected value="<?= $especie->getId() ?>"><?= $especie->getDescricao() ?></option>
-                                    <?php else : ?>
-                                        <option value="<?= $especie->getId() ?>"><?= $especie->getDescricao() ?></option>
-                                    <?php endif ?>
-                                <?php endforeach ?>
-                            </select>
                             <p class="form-group">
                             <label for="cliente">Cliente</label>
                             <select name="cliente" class="form-control">
                                 <?php foreach($daoCliente->read() as $cliente) : ?>
                                     <?php if($cliente->getCliente()->getId() == $cliente->getId()) : ?>
                                         <option selected value="<?= $cliente->getId() ?>"><?= $cliente->getNome() ?></option>
-                                    <?php else : ?>
-                                        <option value="<?= $especie->getId() ?>"><?= $especie->getDescricao() ?></option>
-                                    <?php endif ?>
                                 <?php endforeach ?>
                             </select>
-
                         </p>
-                        <input type="hidden" name="id" value="<?= $produto->getId() ?>">
+                        
                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
                             <input type="submit" value="Salvar" class="btn btn-primary">
