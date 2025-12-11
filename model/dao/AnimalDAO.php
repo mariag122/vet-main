@@ -3,14 +3,13 @@
         public function create($animal) {
             try {
                 $query = BD::getConexao()->prepare(
-                    "INSERT INTO animal(nome,peso,dataNascimento,id_especie, id_cliente) 
-                     VALUES (:n, :p, :d, :e, :c)"
+                    "INSERT INTO animal(nome,peso,dataNascimento,id_cliente) 
+                     VALUES (:n, :p, :d, :c)"
                 );
                 $query->bindValue(':n',$animal->getNome(), PDO::PARAM_STR);
                 $query->bindValue(':p',$animal->getPeso(), PDO::PARAM_STR);
                 $query->bindValue(':d',$animal->getDataNascimento(), PDO::PARAM_STR);
-                // Bind para a chave estrangeira
-                $query->bindValue(':t',$animal->getEspecie()->getId(), PDO::PARAM_INT);
+                // 
                 $query->bindValue(':c',$animal->getCliente()->getId(), PDO::PARAM_INT);
 
                 if(!$query->execute())
@@ -30,9 +29,7 @@
 
                 $animais = array();
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
-                    // Para a associação com o TipoProduto
-                    $daoAnimal = new EspecieDAO();
-                    $especie = $especie->find($linha['especie']);
+                    // Para a associação
                   
                     $daoAnimal = new ClienteDAO();
                     $cliente = $cliente->find($linha['cliente']);
@@ -44,7 +41,7 @@
                     $animal->setValorPeso($linha['peso']);
                     $animal->setDataNascimento($linha['data_nascimento']);
                     // Definir o atributo (objeto) TipoProduto
-                    $animal->setEspecie($especie);
+                    $animal->setCliente($cliente);
 
                     array_push($animais,$animal);
                 }
@@ -65,9 +62,7 @@
                     print_r($query->errorInfo());
 
                 $linha = $query->fetch(PDO::FETCH_ASSOC);
-                // Para a associação com o TipoProduto
-                $daoAnimal = new EspecieDAO();
-                $tipoAnimal = $daoAnimal->find($linha['especie']);
+                // Para a associaçao
                 $daoAnimal = new ClienteDAO();
                 $tipoAnimal = $daoAnimal->find($linha['cliente]);
 
@@ -76,9 +71,7 @@
                 $animal->setId($linha['animal']);
                 $animal->setNome($linha['nome']);
                 $animal->setPeso($linha['peso']);
-                $animal->setDataNascimento($linha['dataNascimento']);
-                
-                $animal->setEspecie($especie);
+                $animal->setDataNascimeto($linha['data_nascimento']);
                 $animal->setCliente($cliente);
                 return $animal;
             }
@@ -91,14 +84,14 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "UPDATE animal
-                     SET nome = :n, peso = :p, dataNascimento = :d, id_especie = :e, id_cliente = :c
+                     SET nome = :n, peso = :p, dataNascimento = :d, id_cliente = :c
                      WHERE id_cliente = :i"
                 );
                 $query->bindValue(':n',$animal->getAnimal(), PDO::PARAM_STR);
                 $query->bindValue(':p',$animal->getPeso(), PDO::PARAM_STR);
                 $query->bindValue(':d',$animal->getDataNascimento(), PDO::PARAM_STR);
                 // Bind para a chave estrangeira
-                $query->bindValue(':e',$animal->getEspecie()->getId(), PDO::PARAM_INT);
+                $query->bindValue
                 $query->bindValue(':c',$animal->getCliente()->getId(), PDO::PARAM_INT);
                 $query->bindValue(':i',$animal->getId(), PDO::PARAM_INT);
 
@@ -114,7 +107,7 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "DELETE FROM animal
-                     WHERE id_produto = :i"
+                     WHERE id_animal = :i"
                 );
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
 
