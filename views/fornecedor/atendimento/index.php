@@ -283,10 +283,10 @@
                                     <a class="link link-success" href="../atendimento_animal/create.php?id=<?= $atendimento->getId() ?>" title="Adicionar Servicos">
                                         <i class="bi bi-cart"></i>
                                     </a>
-                                    <a href="edit.php?id=<?= $compra->getId() ?>" title="Editar">
+                                    <a href="edit.php?id=<?=$atendimento ->getId() ?>" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a class="link link-danger" href="destroy.php?id=<?= $compra->getId() ?>" title="Excluir">
+                                    <a class="link link-danger" href="destroy.php?id=<?= $atendimento->getId() ?>" title="Excluir">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
