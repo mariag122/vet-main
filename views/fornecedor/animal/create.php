@@ -1,8 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    $daoEspecie = new EspecieDAO();
-    $daoEspecie = new EspecieDAO();
+    $daoCliente = new ClienteDAO();
 ?>
 
 <!DOCTYPE html>
@@ -276,15 +275,7 @@
                             <label for="data_nascimento">Data Nascimento</label>
                             <input type="text" name="data_nascimento" class="form-control">
                         </p>
-                        <!-- Para a chave estrangeira (associação com TipoProduto) -->
-                        <p class="form-group">
-                            <label for="especie">especie</label>
-                            <select name="especie" class="form-control">
-                                <?php foreach($daoEspecie->read() as $especie) : ?>
-                                    <option value="<?= $especie->getId() ?>"><?= $especie->getDescricao() ?></option>
-                                <?php endforeach ?>
-                            </select>
-                        </p>
+                        <!-- Para a chave estrangeira-->
                         <p class="form-group">
                             <label for="cliente">cliente</label>
                             <select name="especie" class="form-control">
