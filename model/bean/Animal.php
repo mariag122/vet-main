@@ -4,9 +4,7 @@
         private $nome;
         private $peso;
         private $dataNascimento;
-        
         private $cliente;
-        private $especie;
 
         public function getId() {
             return $this->id;
@@ -46,14 +44,6 @@
 
         public function setCliente($cliente) {
             $this->cliente = $cliente;
-        }
-        
-        public function getEspecie() {
-            return $this->especie;
-        }
-
-        public function setEspecie($especie) {
-            $this->especie = $especie;
         }
 
         public function __toString() {
