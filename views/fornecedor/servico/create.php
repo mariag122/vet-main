@@ -266,7 +266,7 @@
                             <input type="text" name="descricao" class="form-control">
                         </p>
                         <p class="form-group">
-                            <label for="email">Valor</label>
+                            <label for="valor">Valor</label>
                             <input type="text" name="valor" class="form-control">
                         </p>
                         <p class="form-group">
