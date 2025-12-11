@@ -32,10 +32,10 @@
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
                     // Para a associação com o TipoProduto
                     $daoAnimal = new EspecieDAO();
-                    $Especie = $Especie->find($linha['Especie']);
+                    $especie = $especie->find($linha['especie']);
                   
                     $daoAnimal = new ClienteDAO();
-                    $Cliente = $Cliente->find($linha['cliente']);
+                    $cliente = $cliente->find($linha['cliente']);
 
                     // Construindo um objeto do Produto
                     $animal = new Animal();
@@ -44,7 +44,7 @@
                     $animal->setValorPeso($linha['peso']);
                     $animal->setDataNascimento($linha['data_nascimento']);
                     // Definir o atributo (objeto) TipoProduto
-                    $animal->setEspecie($Especie);
+                    $animal->setEspecie($especie);
 
                     array_push($animais,$animal);
                 }
@@ -58,7 +58,7 @@
         
         public function find($id) {
             try {
-                $query = BD::getConexao()->prepare("SELECT * FROM produto WHERE id_produto = :i");
+                $query = BD::getConexao()->prepare("SELECT * FROM animal WHERE id_animal = :i");
                 $query->bindValue(':i', $id, PDO::PARAM_INT);             
 
                 if(!$query->execute())
@@ -74,32 +74,33 @@
                 // Construindo um objeto do Animal
                 $animal = new Animal();
                 $animal->setId($linha['animal']);
-                $produto->setDescricao($linha['descricao']);
-                $produto->setValorUnitario($linha['valor_unitario']);
-                $produto->setQuantidade($linha['quantidade']);
-                // Definir o atributo (objeto) TipoProduto
-                $produto->setTipoProduto($tipoProduto);
-                $produto->setTipoProduto($tipoProduto);
-                return $produto;
+                $animal->setNome($linha['nome']);
+                $animal->setPeso($linha['peso']);
+                $animal->setDataNascimento($linha['dataNascimento']);
+                
+                $animal->setEspecie($especie);
+                $animal->seCliente($Cliente);
+                return $animal;
             }
             catch(PDOException $e) {
                 echo "Erro #3: " . $e->getMessage();
             }
         }
 
-        public function update($produto) {
+        public function update($animal) {
             try {
                 $query = BD::getConexao()->prepare(
                     "UPDATE animal
-                     SET descricao = :d, peso = :p, dataNascimento = :d, id_especie = :e, id_cliente = :c
+                     SET nome = :n, peso = :p, dataNascimento = :d, id_especie = :e, id_cliente = :c
                      WHERE id_cliente = :i"
                 );
-                $query->bindValue(':d',$produto->getDescricao(), PDO::PARAM_STR);
-                $query->bindValue(':v',$produto->getValorUnitario(), PDO::PARAM_STR);
-                $query->bindValue(':q',$produto->getQuantidade(), PDO::PARAM_STR);
+                $query->bindValue(':n',$animal->getAnimal(), PDO::PARAM_STR);
+                $query->bindValue(':p',$animal->getPeso(), PDO::PARAM_STR);
+                $query->bindValue(':d',$animal->getDataNascimento(), PDO::PARAM_STR);
                 // Bind para a chave estrangeira
-                $query->bindValue(':t',$produto->getTipoProduto()->getId(), PDO::PARAM_INT);
-                $query->bindValue(':i',$produto->getId(), PDO::PARAM_INT);
+                $query->bindValue(':e',$animal->getEspecie()->getId(), PDO::PARAM_INT);
+                $query->bindValue(':c',$animal->getCliente()->getId(), PDO::PARAM_INT);
+                $query->bindValue(':i',$animal->getId(), PDO::PARAM_INT);
 
                 if(!$query->execute())
                     print_r($query->errorInfo());
@@ -112,7 +113,7 @@
         public function destroy($id) {
             try {
                 $query = BD::getConexao()->prepare(
-                    "DELETE FROM produto 
+                    "DELETE FROM animal
                      WHERE id_produto = :i"
                 );
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
