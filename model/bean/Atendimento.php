@@ -2,7 +2,7 @@
     class Atendimento {
         // Atributos
         private $id;
-        private $data_atendimento;
+        private $dataAtendimento;
         private $animal; //
         private $servico; // 
 
@@ -15,12 +15,12 @@
             $this->id = $id;
         }
 
-        public function getData_atendimento() {
-            return $this->data_atendimento;
+        public function getDataAtendimento() {
+            return $this->dataAtendimento;
         }
 
-        public function setData_atendimento($data_atendimento) {
-            $this->data_atendimento = $data_atendimento;
+        public function setDataAtendimento($dataAtendimento) {
+            $this->dataAtendimento = $dataAtendimento;
         }
 
         public function getAnimal() {
